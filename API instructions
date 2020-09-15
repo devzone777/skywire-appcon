@@ -1,0 +1,6 @@
+API is served at http://locahost:4444
+
+The app enviroment is available at http://localhost/api/v1/Env
+
+This should work in any web browser however it is meant to be used
+within code to pull in the app env values via json.
