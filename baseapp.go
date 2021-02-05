@@ -11,28 +11,27 @@ import (
 	"net/http"
 	"sync"
 	"time"
-	//"strconv"
 	"strings"
 
 	"github.com/gorilla/mux"
 
-	"github.com/SkycoinProject/dmsg/cipher"
-	"github.com/SkycoinProject/skycoin/src/util/logging"
+	"github.com/skycoin/dmsg/cipher"
+	"github.com/skycoin/skycoin/src/util/logging"
 
-	"github.com/SkycoinProject/skywire-mainnet/internal/netutil"
-	"github.com/SkycoinProject/skywire-mainnet/pkg/app"
-	"github.com/SkycoinProject/skywire-mainnet/pkg/app/appnet"
-	"github.com/SkycoinProject/skywire-mainnet/pkg/routing"
-	"github.com/SkycoinProject/skywire-mainnet/pkg/util/buildinfo"
+	"github.com/skycoin/skywire/internal/netutil"
+	"github.com/skycoin/skywire/pkg/app"
+	"github.com/skycoin/skywire/pkg/app/appnet"
+	"github.com/skycoin/skywire/pkg/routing"
+	"github.com/skycoin/skywire/pkg/util/buildinfo"
 )
 
 const (
 	appName = "baseapp"
 	netType = appnet.TypeSkynet
-	port    = routing.Port(44)
+	port    = routing.Port(54)
 )
 
-var addr = flag.String("addr", ":8004", "address to bind")
+var addr = flag.String("addr", ":8005", "address to bind")
 var r = netutil.NewRetrier(50*time.Millisecond, 5, 2)
 var clientConfig, _ = app.ClientConfigFromEnv()
 
@@ -86,8 +85,8 @@ func main() {
 	//api.HandleFunc("", delete).Methods(http.MethodDelete)
 	api.HandleFunc("/Env", env)
 
-	log.Println("Serving BaseApp ENV Params on localhost:4444")
-	log.Fatal(http.ListenAndServe(":4444", r))
+	log.Println("Serving BaseApp ENV Params on localhost:5454")
+	log.Fatal(http.ListenAndServe(":5454", r))
 }
 
 func env(w http.ResponseWriter, r *http.Request) {
