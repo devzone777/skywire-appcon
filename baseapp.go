@@ -165,7 +165,7 @@ func listenLoop() {
 		connsMu.Lock()
 		baseConns[raddr.PubKey] = conn
 		connsMu.Unlock()
-		log.Printf("Accepted skychat conn on %s from %s\n", conn.LocalAddr(), raddr.PubKey)
+		log.Printf("Accepted Baseapp conn on %s from %s\n", conn.LocalAddr(), raddr.PubKey)
 
 		go handleConn(conn)
 	}
